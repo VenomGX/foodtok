@@ -194,6 +194,7 @@ button.cta:focus-visible { outline: 2px solid var(--sys-tint); outline-offset: 2
   font-size: 17px;
   font-weight: 600;
   color: var(--sys-text); /* make heading text white */
+  background: var(--sys-card);
 }
 
 #closeModal { cursor: pointer; font-size: 28px; transform: rotate(90deg); color: var(--sys-subtext); }
@@ -246,13 +247,10 @@ button.cta:focus-visible { outline: 2px solid var(--sys-tint); outline-offset: 2
 /* ----------  Recipe Sheet Modal ------------------------------------ */
 .recipePanel .panelHeader strong {
   color: var(--sys-text);
-  background: var(--sys-card);
-  backdrop-filter: blur(20px); /* optional blur */
-  background-color: rgba(28, 28, 30, 0.95); /* dark semi-solid */ border-top-left-radius: var(--radius-lg);
-  border-top-right-radius: var(--radius-lg); height: 60%;
-  display: flex; flex-direction: column; transform: translateY(0);
-  transition: transform .25s ease;
+  font-size: 18px;
+  font-weight: 700;
 }
+
 .modal.closing .recipePanel { transform: translateY(100%); }
 .recipeContent {
   flex: 1;
@@ -466,6 +464,11 @@ h2, .sectionTitle {
   font-weight: 700;
   color: var(--sys-text);
   margin-bottom: 16px;
+}
+.panelHeader strong {
+  color: var(--sys-text);
+  font-size: 18px;
+  font-weight: 700;
 }
 
 
