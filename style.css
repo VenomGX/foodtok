@@ -193,7 +193,7 @@ button.cta:focus-visible { outline: 2px solid var(--sys-tint); outline-offset: 2
   border-bottom: 1px solid var(--sys-border);
   font-size: 17px;
   font-weight: 600;
-  color: #ffffff; /* make heading text white */
+  color: var(--sys-text); /* make heading text white */
 }
 
 #closeModal { cursor: pointer; font-size: 28px; transform: rotate(90deg); color: var(--sys-subtext); }
@@ -244,7 +244,8 @@ button.cta:focus-visible { outline: 2px solid var(--sys-tint); outline-offset: 2
 }
 
 /* ----------  Recipe Sheet Modal ------------------------------------ */
-.recipePanel {
+.recipePanel .panelHeader strong {
+  color: var(--sys-text);
   background: var(--sys-card); border-top-left-radius: var(--radius-lg);
   border-top-right-radius: var(--radius-lg); height: 60%;
   display: flex; flex-direction: column; transform: translateY(0);
