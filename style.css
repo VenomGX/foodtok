@@ -246,7 +246,9 @@ button.cta:focus-visible { outline: 2px solid var(--sys-tint); outline-offset: 2
 /* ----------  Recipe Sheet Modal ------------------------------------ */
 .recipePanel .panelHeader strong {
   color: var(--sys-text);
-  background: var(--sys-card); border-top-left-radius: var(--radius-lg);
+  background: var(--sys-card);
+  backdrop-filter: blur(20px); /* optional blur */
+  background-color: rgba(28, 28, 30, 0.95); /* dark semi-solid */ border-top-left-radius: var(--radius-lg);
   border-top-right-radius: var(--radius-lg); height: 60%;
   display: flex; flex-direction: column; transform: translateY(0);
   transition: transform .25s ease;
