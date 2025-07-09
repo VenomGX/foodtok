@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- ★ iPhone fills the whole screen & respects the notch -->
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- ★ let the site run full-screen when “Add to Home Screen” is used -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- (optional) iOS home-screen icon – drop in any 192 × 192 PNG you like -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png">  <!-- ★ -->
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Theme colour for the system status bar (matches SF-blue tint) -->
+  <meta name="theme-color" content="#007aff">
+
+
+  <title>FoodTok Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
+
+<body>
+  <div class="device">
+
+  
+
+  <!-- TOP NAV -->
+  <nav>
+    <button class="active" data-target="fypSection">FYP</button>
+    <button data-target="ingredientsSection">Find Recipe</button>
+  </nav>
+
+  <!-- FYP SECTION -->
+<section id="fypSection" class="active">
+  <h2 class="sectionTitle">FoodTok Feed</h2>
+  <div id="fypFeed"></div>
+</section>
+
+  <!-- INGREDIENT “PANTRY” SECTION -->
+<section id="ingredientsSection">
+  <h2 class="sectionTitle">My Pantry</h2>
+  <div class="inputRow">
+    <input id="ingredientInput" type="text" placeholder="e.g. mozzarella  ‣  press Enter to add" />
+    <button id="addBtn" class="cta">Add</button>
+  </div>
+  <div id="pillBox" class="pillBox"></div>
+  <h3>Recipes I can cook now</h3>
+  <ul id="recipesList" class="recipesList"></ul>
+</section>
+  <!-- ACTIVITY SECTION -->
+<section id="activitySection">
+  <h2 class="sectionTitle">Activity</h2>
+  <ul id="activityList" class="activityList"></ul>
+</section>
+
+
+  <!-- PROFILE SECTION -->
+<section id="profileSection">
+  <div class="profileHeader">
+    <img class="avatar" src="https://placehold.co/80x80" alt="avatar" />
+    <div>
+      <h3>@your_username</h3>
+      <p>12 videos • 350 followers</p>
+    </div>
+  </div>
+  <h2 class="sectionTitle" style="margin-top:12px;">My Posted Videos</h2>
+  <div id="profileGrid"></div>
+</section>
+
+  <!-- NEW Upload section -->
+<section id="uploadSection">
+  <div class="uploadCard">
+    <h2 class="sectionTitle"><span style="font-size:26px;">➕</span> New Recipe</h2>
+
+      <!-- video preview + URL field -->
+      <div class="videoDrop">
+        <video id="videoPreview" muted loop playsinline></video>
+        <input id="uploadVideo" type="url"
+              placeholder="Paste video URL (mp4 or web-hosted)" />
+      </div>
+
+      <!-- recipe name -->
+      <input id="uploadName" type="text" placeholder="Recipe name" />
+
+      <!-- ingredients builder -->
+      <div class="chipInput">
+        <h4>Ingredients</h4>
+        <div id="uploadIngPills" class="pillBox"></div>
+        <input id="uploadIngField" type="text"
+              placeholder="Type an ingredient + Enter" />
+      </div>
+
+      <!-- steps builder -->
+      <div class="chipInput">
+        <h4>Steps</h4>
+        <ol id="uploadStepList" class="stepListSimple"></ol>
+        <input id="uploadStepField" type="text"
+              placeholder="Type a step + Enter" />
+      </div>
+
+      <!-- post button -->
+      <button id="uploadSubmit" class="cta">Post recipe</button>
+    </div>
+  </section>
+
+
+  <!-- BOTTOM NAV -->
+  <footer class="bottomNav">
+    <button class="active" data-target="activitySection">🔔</button>
+    <button data-target="uploadSection">➕</button>
+    <button data-target="profileSection">👤</button>
+  </footer>
+
+  <!-- COMMENT DRAWER -->
+  <div id="commentModal" class="modal">
+    <div class="commentPanel">
+      <div class="panelHeader">
+        <span id="closeModal">—</span>
+        <strong>Comments</strong>
+      </div>
+      <div id="commentsList" class="commentsList"></div>
+      <div class="commentInput">
+        <input id="commentField" type="text" placeholder="Add a comment…" />
+        <button id="sendComment">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECIPE DRAWER (new) -->
+  <div id="recipeModal" class="modal">
+    <div class="recipePanel">
+      <div class="panelHeader">
+        <span id="closeRecipeModal">—</span>
+        <strong id="recipeTitle">Recipe</strong>
+      </div>
+
+      <div class="recipeContent">
+        <h4>Ingredients</h4>
+        <ul id="recipeIngList" class="recipeList"></ul>
+
+        <h4 style="margin-top:16px;">Steps</h4>
+        <ol id="recipeStepList" class="stepList"></ol>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  
+  </div>
+</body>
+</html>
